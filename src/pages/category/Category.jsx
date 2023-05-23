@@ -18,7 +18,7 @@ import HeadingTitle from '../../components/shared/headingTitle/HeadingTitle';
 const Category = () => {
   return (
     <div className='mb-20'>
-      <HeadingTitle topheading="---From 11:00am to 10:00pm---" heading="ORDER ONLINE"></HeadingTitle>
+      <HeadingTitle subHeading="---From 11:00am to 10:00pm---" heading="ORDER ONLINE"></HeadingTitle>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}

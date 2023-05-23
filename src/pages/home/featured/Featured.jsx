@@ -1,0 +1,13 @@
+import React from 'react'
+
+const Featured = () => {
+  return (
+    <div>
+        <div>
+             
+        </div>
+    </div>
+  )
+}
+
+export default Featured
