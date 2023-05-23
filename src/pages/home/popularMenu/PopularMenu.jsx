@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+// page import
 import HeadingTitle from '../../../components/shared/headingTitle/HeadingTitle'
 import MenuItem from '../../../components/shared/menuItem/MenuItem';
 
 const PopularMenu = () => {
-
     const [menu,setMenu] = useState([]);
     useEffect(()=>{
         fetch(`menu.json`)
@@ -16,11 +16,10 @@ const PopularMenu = () => {
             console.log(error.message)
         })
     },[])
-console.log(menu)
 
   return (
-    <div className='pb-20'>
-        <div className='container mx-auto px-5'>
+    <div>
+        <div className='container mx-auto px-5 pb-20'>
             <HeadingTitle subHeading="---Check it out---" heading="FROM OUR MENU"></HeadingTitle>   
             <div className='grid lg:grid-cols-2 gap-10'>
                 {

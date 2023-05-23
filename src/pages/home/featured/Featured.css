@@ -1,0 +1,7 @@
+.featured-item{
+    background:linear-gradient(#00000073,#00000073), url('./../../../assets/home/featured.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
