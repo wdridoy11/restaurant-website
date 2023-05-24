@@ -47,9 +47,6 @@ const Testimonials = () => {
                         <h3 className='text-3xl font-semibold text-center mb-10'>{testimonial.name}</h3>
                     </SwiperSlide>)}
             </Swiper>
-            {/* <div>
-                {testimonials.map((testimonial)=>)}
-            </div> */}
         </div>
     </div>
   )

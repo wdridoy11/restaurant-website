@@ -5,7 +5,7 @@ const Header = () => {
 
   const navMenu =<>
       <li><Link className='text-lg font-medium' to={`/`}>Home</Link></li>
-      <li><Link className='text-lg font-medium' to={`/`}>Our Menu</Link></li>
+      <li><Link className='text-lg font-medium' to={`/menu`}>Our Menu</Link></li>
       <li><Link className='text-lg font-medium' to={`/`}>Our Shop</Link></li>
       <li><Link className='text-lg font-medium' to={`/`}>Contact Us</Link></li>
       <li><Link className='text-lg font-medium' to={`/`}>Dashboard</Link></li>
