@@ -5,10 +5,10 @@ import "./Featured.css"
 
 const Featured = () => {
   return (
-    <div className='pb-20 pt-1 featured-item text-white'>
+    <div className='py-20 featured-item text-white'>
         <div className='container mx-auto px-5'>
              <HeadingTitle subHeading="---Check it out---" heading="FROM OUR MENU"></HeadingTitle>
-             <div className='grid md:grid-cols-2 gap-10 items-center'>
+             <div className='grid md:grid-cols-2 gap-10 items-center mt-20'>
                 <div>
                     <img className='rounded-md' src={featuredImage} alt="featured-Image" />
                 </div>

@@ -35,7 +35,7 @@ const Testimonials = () => {
                 mousewheel={true}
                 keyboard={true}
                 modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                className="mySwiper w-1/2 px-5 text-center">
+                className="mySwiper w-1/2 px-5 text-center mt-16">
                     {testimonials.map((testimonial)=><SwiperSlide className='px-20'>
                           <Rating
                           style={{ maxWidth: 180 }}
@@ -44,7 +44,7 @@ const Testimonials = () => {
                           readOnly
                         />
                         <p className='text-center my-5'>{testimonial.details}</p>
-                        <h3 className='text-3xl font-semibold text-center mb-10'>{testimonial.name}</h3>
+                        <h3 className='text-3xl text-[#D99904] font-semibold text-center mb-10'>{testimonial.name}</h3>
                     </SwiperSlide>)}
             </Swiper>
         </div>
