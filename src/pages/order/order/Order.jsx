@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import Cover from '../../../components/shared/cover/Cover'
-import order from '../../../assets/shop/banner2.jpg'
+// page import
 import useMenu from '../../../hooks/useMenu';
+import Cover from '../../../components/shared/cover/Cover'
 import FoodCard from '../../../components/shared/foodCard/FoodCard';
+
+import order from '../../../assets/shop/banner2.jpg'
+import OrderTab from '../orderTab/OrderTab';
 const Order = () => {
   const [tabIndex,setTabIndex] = useState(0);
   const [menu] = useMenu();
   const soup = menu.filter((item)=>item.category === 'soup');
   const pizza = menu.filter((item)=>item.category === 'pizza');
   const salad = menu.filter((item)=>item.category === 'salad');
-  const offered = menu.filter((item)=>item.category === 'offered');
+  const drinks = menu.filter((item)=>item.category === 'drinks');
   const desserts = menu.filter((item)=>item.category === 'dessert');
 
   return (
@@ -29,14 +32,20 @@ const Order = () => {
           </TabList>
 
           <TabPanel>
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
-              {salad.map((item)=><FoodCard key={item.id} item={item}></FoodCard>)}
-            </div>
+              <OrderTab item={salad}></OrderTab>
           </TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel></TabPanel>
+          <TabPanel>
+              <OrderTab item={pizza}></OrderTab>
+          </TabPanel>
+          <TabPanel>
+              <OrderTab item={soup}></OrderTab>
+          </TabPanel>
+          <TabPanel>
+              <OrderTab item={desserts}></OrderTab>
+          </TabPanel>
+          <TabPanel>
+              <OrderTab item={drinks}></OrderTab>
+          </TabPanel>
         </Tabs>
         </div>
       </div>
