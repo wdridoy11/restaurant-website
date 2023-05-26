@@ -8,9 +8,15 @@ import FoodCard from '../../../components/shared/foodCard/FoodCard';
 
 import order from '../../../assets/shop/banner2.jpg'
 import OrderTab from '../orderTab/OrderTab';
+import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 const Order = () => {
-  const [tabIndex,setTabIndex] = useState(0);
+  const categorys = ['salad','pizza','soup','desserts','drinks']
+  const {category} = useParams()
+  const initialIndex = categorys.indexOf(category)
+  const [tabIndex,setTabIndex] = useState(initialIndex);
   const [menu] = useMenu();
+
   const soup = menu.filter((item)=>item.category === 'soup');
   const pizza = menu.filter((item)=>item.category === 'pizza');
   const salad = menu.filter((item)=>item.category === 'salad');
@@ -19,6 +25,7 @@ const Order = () => {
 
   return (
     <div>
+      <Helmet><title>Bistro | Order Food</title></Helmet>
       <Cover coverImg={order} coverTitle="OUR FOOD"></Cover>
       <div className='container mx-auto px-5 py-20'>
         <div>
