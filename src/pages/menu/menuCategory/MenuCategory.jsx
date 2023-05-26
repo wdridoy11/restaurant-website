@@ -1,6 +1,7 @@
 import React from 'react'
 import MenuItem from '../../../components/shared/menuItem/MenuItem'
 import Cover from '../../../components/shared/cover/Cover'
+import { Link } from 'react-router-dom'
 
 const MenuCategory = ({menu,btnText,title,coverImg}) => {
   return (
@@ -12,7 +13,7 @@ const MenuCategory = ({menu,btnText,title,coverImg}) => {
                     menu.map((item)=><MenuItem key={item._id} item={item}></MenuItem>)
                 }
             </div>
-            <button className='border-b-2 border-black text-black text-base font-medium py-2 px-5 rounded-lg block mx-auto mt-10'>{btnText}</button>
+            <Link className='border-b-2 border-black text-black text-base font-medium py-2 px-5 rounded-lg block mx-auto mt-10'  to={`/order/${title}`}>Order Now</Link>
         </div>
     </div>
   )
