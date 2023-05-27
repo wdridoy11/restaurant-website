@@ -52,6 +52,7 @@ const AuthProvider = ({children}) => {
     // user info
     const userInfo={
         user,
+        userLogin,
         userLogout,
         createUserUsingGoogle,
         createUserUsingGithub

@@ -1,20 +1,29 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaGithub } from 'react-icons/fa';
-// import image
+import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
+
 import authentication from '../../assets/others/authentication.png';
 import authentication1 from '../../assets/others/authentication2.png';
 import { AuthContetxt } from '../../context/AuthProvider';
 
 const Login = () => {
-    const {user} = useContext(AuthContetxt)
+    
+    const {createUserUsingGoogle, createUserUsingGithub, userLogin} = useContext(AuthContetxt);
+    // handle login
     const handleLogin =(event)=>{
         event.preventDefault();
         const form = event.target;
         const email = form.target.value;
         const password = form.target.value;
+        userLogin(email,password)
+        .then((res)=>{
+            const user = res.user;
+            console.log(user)
+        })
+        .catch((error)=>{
+            console.log(error.message)
+        })
     }
-
 
   return (
     <div className='min-h-screen pt-72' style={{ backgroundImage:`url(${authentication})`}}>
@@ -44,7 +53,8 @@ const Login = () => {
                         <p className='text-xl text-black'>Or sign in with</p>
                         <div className='flex justify-center items-center gap-5 mt-3'>
                             <button className='border border-black p-3 rounded-full'><FaFacebookF></FaFacebookF></button>
-                            <button className='border border-black p-3 rounded-full'><FaGithub></FaGithub></button>
+                            <button className='border border-black p-3 rounded-full' onClick={createUserUsingGoogle}><FaGoogle></FaGoogle></button>
+                            <button className='border border-black p-3 rounded-full' onClick={createUserUsingGithub}><FaGithub></FaGithub></button>
                         </div>
                     </div>
                 </div>
