@@ -1,0 +1,12 @@
+.react-tabs__tab {
+    padding: 10px 25px;
+}
+.react-tabs__tab--selected {
+    background: #FB923C;
+    color:#fff;
+    border:none;
+}
+.react-tabs__tab-list {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}

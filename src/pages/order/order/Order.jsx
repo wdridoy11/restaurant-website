@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import "./Order.css"
 // page import
 import useMenu from '../../../hooks/useMenu';
 import Cover from '../../../components/shared/cover/Cover'
-import FoodCard from '../../../components/shared/foodCard/FoodCard';
 
 import order from '../../../assets/shop/banner2.jpg'
 import OrderTab from '../orderTab/OrderTab';
