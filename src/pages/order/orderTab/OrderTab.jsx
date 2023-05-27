@@ -8,8 +8,7 @@ function OrderTab({item}){
           {item.map((item)=><FoodCard key={item.id} item={item}></FoodCard>)}
         </div>
     </div>
-
   )
 }
 
-export default OrderTab
+export default OrderTab;

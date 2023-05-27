@@ -13,7 +13,7 @@ const MenuCategory = ({menu,btnText,title,coverImg}) => {
                     menu.map((item)=><MenuItem key={item._id} item={item}></MenuItem>)
                 }
             </div>
-            <Link className='border-b-2 border-black text-black text-base font-medium py-2 px-5 rounded-lg block mx-auto mt-10'  to={`/order/${title}`}>Order Now</Link>
+            <Link className='border-b-2 inline-block border-black text-black text-base font-medium py-2 px-5 rounded-lg mx-auto text-center mt-10'  to={`/order/${title}`}>Order Now</Link>
         </div>
     </div>
   )
