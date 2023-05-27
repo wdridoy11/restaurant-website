@@ -11,12 +11,13 @@ import OrderTab from '../orderTab/OrderTab';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 const Order = () => {
+
   const categorys = ['salad','pizza','soup','desserts','drinks']
   const {category} = useParams()
   const initialIndex = categorys.indexOf(category)
   const [tabIndex,setTabIndex] = useState(initialIndex);
   const [menu] = useMenu();
-
+  //  menu data filter by category
   const soup = menu.filter((item)=>item.category === 'soup');
   const pizza = menu.filter((item)=>item.category === 'pizza');
   const salad = menu.filter((item)=>item.category === 'salad');
@@ -53,6 +54,7 @@ const Order = () => {
           <TabPanel>
               <OrderTab item={drinks}></OrderTab>
           </TabPanel>
+          
         </Tabs>
         </div>
       </div>
