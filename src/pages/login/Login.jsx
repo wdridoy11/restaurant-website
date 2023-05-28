@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import Swal from 'sweetalert2';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 
 import authentication from '../../assets/others/authentication.png';
@@ -7,8 +8,12 @@ import authentication1 from '../../assets/others/authentication2.png';
 import { AuthContetxt } from '../../context/AuthProvider';
 
 const Login = () => {
-    
+
     const {createUserUsingGoogle, createUserUsingGithub, userLogin} = useContext(AuthContetxt);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     // handle login
     const handleLogin =(event)=>{
         event.preventDefault();
@@ -18,7 +23,16 @@ const Login = () => {
         userLogin(email,password)
         .then((res)=>{
             const user = res.user;
-            console.log(user)
+            Swal.fire({
+                title: 'User login successful',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              });
+              navigate(from,{replace:true})
         })
         .catch((error)=>{
             console.log(error.message)

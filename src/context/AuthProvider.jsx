@@ -6,7 +6,8 @@ import {
     GithubAuthProvider,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    updateProfile
 } from 'firebase/auth'
 import app from '../utils/firebase/firebase.config';
 export const AuthContetxt = createContext();
@@ -58,10 +59,12 @@ const AuthProvider = ({children}) => {
     }
 
     // user profile updata
-    const userProfileUpdate=(auth,currentUser)=>{
-        return 
+    const userProfileUpdate=(name,photo)=>{
+      return  updateProfile(auth,currentUser,{
+            displayName:name,
+            photoURL:photo
+        })
     }
-
 
     // user active check
     useEffect(()=>{
@@ -80,6 +83,7 @@ const AuthProvider = ({children}) => {
         loading,
         userLogin,
         userLogout,
+        userProfileUpdate, 
         createUserUsingEmail,
         createUserUsingGoogle,
         createUserUsingGithub

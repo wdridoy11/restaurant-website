@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+
 import { AuthContetxt } from '../../../context/AuthProvider'
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Header = () => {
-  
+
   const {user , userLogout} = useContext(AuthContetxt);
   // landle user logout
   const userLogOut=()=>{
@@ -20,7 +22,13 @@ const Header = () => {
       <li><Link className='text-lg font-medium' to={`/`}>Home</Link></li>
       <li><Link className='text-lg font-medium' to={`/menu`}>Our Menu</Link></li>
       <li><Link className='text-lg font-medium' to={`/order/salad`}>Our Shop</Link></li>
+      <li><Link className='text-lg font-medium' to={`/secret`}>Secret</Link></li>
       <li><Link className='text-lg font-medium' to={`/`}>Contact Us</Link></li>
+      <li>
+          <Link to={'/'}>
+                <button className="btn gap-2"><FaShoppingCart></FaShoppingCart> <div className="badge">+99</div></button>
+          </Link>
+      </li>
       <li>
           {
             user ? <Link className='text-lg font-medium rounded-full inline-block px-5 bg-orange-400' onClick={userLogOut}>LogOut</Link>:

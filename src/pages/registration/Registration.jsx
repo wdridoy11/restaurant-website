@@ -1,47 +1,57 @@
 import React, { useContext } from 'react'
+import Swal from 'sweetalert2';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContetxt } from '../../context/AuthProvider'
-import { Link } from 'react-router-dom';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 
 import authentication from '../../assets/others/authentication.png';
 import authentication1 from '../../assets/others/authentication2.png';
 import { useForm } from 'react-hook-form';
+import { Helmet } from 'react-helmet-async';
 
 const Registration = () => {
-
+  
+  // import AuthProvider firebase
+  const {createUserUsingGoogle, createUserUsingGithub,createUserUsingEmail, userProfileUpdate} = useContext(AuthContetxt);
+  // import useForm
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+  // handle Registration
   const onSubmit = data =>{
-      createUserUsingEmail(data)
+      createUserUsingEmail(data.email,data.password)
       .then((res)=>{
         const user = res.user;
         console.log(user)
+        userProfileUpdate(user.name, user.photoURL)
+        .then((res)=>{
+          console.log(res)
+          Swal.fire({
+            title: 'account create successful',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          });
+          navigate('/')
+        })
+        .catch((error)=>{
+          console.log(error.message)
+        })
       })
       .catch((error)=>{
         console.log(error.message)
       })
+      console.log(data)
   };
 
-  const {createUserUsingGoogle, createUserUsingGithub,createUserUsingEmail} = useContext(AuthContetxt);
-  // handle Registration
-  // const handleRegistration =(event)=>{
-  //     event.preventDefault();
-  //     const form = event.target;
-  //     const email = form.target.value;
-  //     const password = form.target.value;
-  //     // user create using email
-  //     createUserUsingEmail(email,password)
-  //     .then((res)=>{
-  //       const user = res.user;
-  //       console.log(user)
-  //     })
-  //     .catch((error)=>{
-  //       console.log(error.message)
-  //     })
-  // }
 
   return (
-    <div className='min-h-screen pt-72' style={{ backgroundImage:`url(${authentication})`}}>
-        <div className='container mx-auto px-5' >
+    <>
+    <Helmet><title>Bistro Boss | Registration</title></Helmet>
+      <div className='min-h-screen pt-28' style={{ backgroundImage:`url(${authentication})`}}>
+          <div className='container mx-auto px-5' >
             <div className='grid md:grid-cols-2 items-center gap-10'>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -52,6 +62,13 @@ const Registration = () => {
                             </label>
                             <input type="text" id='name' {...register("name")} name='name' placeholder="Enter your name" className="outline-none p-4 rounded-lg input-bordered w-full"required />
                             {errors.name && <span>This name field is required</span>}
+                        </div>
+                        <div className="form-control w-ful">
+                            <label className="label">
+                              <span className="label-text text-base font-medium">Photo URL</span>
+                            </label>
+                            <input type="text" id='photo' {...register("photo")} name='photo' placeholder="Photo URL" className="outline-none p-4 rounded-lg input-bordered w-full"required />
+                            {errors.photo && <span>This name field is required</span>}
                         </div>
                         <div className="form-control w-ful">
                             <label className="label">
@@ -93,6 +110,7 @@ const Registration = () => {
             </div>
         </div>
     </div>
+    </>
   )
 }
 
