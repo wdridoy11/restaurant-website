@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 
 import { AuthContetxt } from '../../../context/AuthProvider'
 import { FaShoppingCart } from 'react-icons/fa';
+import useCart from '../../../hooks/useCart';
 
 const Header = () => {
 
   const {user , userLogout} = useContext(AuthContetxt);
+  const [cart] = useCart();
   // landle user logout
   const userLogOut=()=>{
     userLogout()
@@ -25,8 +27,8 @@ const Header = () => {
       <li><Link className='text-lg font-medium' to={`/secret`}>Secret</Link></li>
       <li><Link className='text-lg font-medium' to={`/`}>Contact Us</Link></li>
       <li>
-          <Link to={'/'}>
-                <button className="btn gap-2"><FaShoppingCart></FaShoppingCart> <div className="badge">+99</div></button>
+          <Link to={'/dashboard/mycart'}>
+                <button className="btn gap-2"><FaShoppingCart></FaShoppingCart> <div className="badge">+{cart?.length || 0}</div></button>
           </Link>
       </li>
       <li>
