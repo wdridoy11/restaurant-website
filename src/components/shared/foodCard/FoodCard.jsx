@@ -7,15 +7,16 @@ import useCart from '../../../hooks/useCart';
 
 const FoodCard = ({item}) => {
 
-    const {image,name, recipe,price} =item;
+    const {image,name, recipe,price,_id} =item;
     const {user} = useContext(AuthContetxt);
     const [, refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
 
     const handleAddToCard =(menuItem)=>{
+      // console.log(menuItem)
       if(user && user.email){
-        const orderItem ={image,name, recipe,price,menuItemId:_id,email:user.email}
+        const orderItem ={image,name, recipe,price,menuItem:_id,email:user.email}
         fetch(`http://localhost:5000/carts`,{
           method:"POST",
           headers:{
@@ -29,13 +30,10 @@ const FoodCard = ({item}) => {
             refetch();
             Swal.fire({
               position:"top-end",
-              title: 'Add to Cart successful',
-              showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-              },
-              hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-              }
+              icon:"success",
+              title: 'Food added on the cart.',
+              showConfirmButton: false,
+              timer: 1500
             })
           }else{
             Swal.fire({
@@ -45,7 +43,7 @@ const FoodCard = ({item}) => {
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
-              confirmButtonText: 'Login'
+              confirmButtonText: 'Login Now'
             }).then((result) => {
               if (result.isConfirmed) {
                navigate("/login",{state:{from:location}})
