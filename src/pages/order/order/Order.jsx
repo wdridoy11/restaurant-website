@@ -10,8 +10,9 @@ import order from '../../../assets/shop/banner2.jpg'
 import OrderTab from '../orderTab/OrderTab';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-const Order = () => {
 
+const Order = () => {
+  
   const categorys = ['salad','pizza','soup','desserts','drinks']
   const {category} = useParams()
   const initialIndex = categorys.indexOf(category)

@@ -2,17 +2,18 @@ import React, { useContext } from 'react'
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContetxt } from '../../context/AuthProvider'
-import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
+
 
 import authentication from '../../assets/others/authentication.png';
 import authentication1 from '../../assets/others/authentication2.png';
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
+import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
 
 const Registration = () => {
   
   // import AuthProvider firebase
-  const {createUserUsingGoogle, createUserUsingGithub,createUserUsingEmail, userProfileUpdate} = useContext(AuthContetxt);
+  const {createUserUsingEmail, userProfileUpdate} = useContext(AuthContetxt);
   // import useForm
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const navigate = useNavigate();
@@ -96,12 +97,7 @@ const Registration = () => {
                     </form>
                     <div className='text-center mt-5'>
                         <p className='font-semibold text-[#D1A054] text-xl'>Already registered? <Link to={'/login'}>Go to log in</Link></p>
-                        <p className='text-xl text-black my-2'>Or sign in with</p>
-                        <div className='flex justify-center items-center gap-5 mt-3'>
-                            <button className='border border-black p-3 rounded-full'><FaFacebookF></FaFacebookF></button>
-                            <button className='border border-black p-3 rounded-full' onClick={createUserUsingGoogle}><FaGoogle></FaGoogle></button>
-                            <button className='border border-black p-3 rounded-full' onClick={createUserUsingGithub}><FaGithub></FaGithub></button>
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
                 <div>

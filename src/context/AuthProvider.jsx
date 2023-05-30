@@ -19,15 +19,9 @@ const AuthProvider = ({children}) => {
     
     // create user using google 
     const createUserUsingGoogle=()=>{
+        setLoading(true)
         const googleProvider = new GoogleAuthProvider();
-        signInWithPopup(auth,googleProvider)
-        .then((res)=>{
-            const user = res.user;
-            console.log(user)
-        })
-        .catch((error)=>{
-            console.log(error.message)
-        })
+        return signInWithPopup(auth,googleProvider)
     }
 
     // create user using github 

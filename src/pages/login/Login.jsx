@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 
 import authentication from '../../assets/others/authentication.png';
 import authentication1 from '../../assets/others/authentication2.png';
 import { AuthContetxt } from '../../context/AuthProvider';
+import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
 
 const Login = () => {
 
-    const {createUserUsingGoogle, createUserUsingGithub, userLogin} = useContext(AuthContetxt);
+    const {userLogin} = useContext(AuthContetxt);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -65,12 +65,7 @@ const Login = () => {
                     </form>
                     <div className='text-center mt-5'>
                         <p className='font-normal text-[#D1A054] text-xl'>New here? <Link to={'/Registration'}>Create a New Account</Link></p>
-                        <p className='text-xl text-black my-2'>Or sign in with</p>
-                        <div className='flex justify-center items-center gap-5 mt-3'>
-                            <button className='border border-black p-3 rounded-full'><FaFacebookF></FaFacebookF></button>
-                            <button className='border border-black p-3 rounded-full' onClick={createUserUsingGoogle}><FaGoogle></FaGoogle></button>
-                            <button className='border border-black p-3 rounded-full' onClick={createUserUsingGithub}><FaGithub></FaGithub></button>
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
