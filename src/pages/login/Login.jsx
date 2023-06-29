@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { AuthContetxt } from '../../context/AuthProvider';
 import authentication from '../../assets/others/authentication.png';
 import authentication1 from '../../assets/others/authentication2.png';
-import { AuthContetxt } from '../../context/AuthProvider';
 import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
 
 const Login = () => {

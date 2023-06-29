@@ -13,46 +13,46 @@ const FoodCard = ({item}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleAddToCard =(menuItem)=>{
-      // console.log(menuItem)
+    const handleAddToCart = item => {
+      console.log(item);
       if(user && user.email){
-        const orderItem ={image,name, recipe,price,menuItem:_id,email:user.email}
-        fetch(`http://localhost:5000/carts`,{
-          method:"POST",
-          headers:{
-            "content-type":"application/json"
-          },
-          body:JSON.stringify(orderItem)
-        })
-        .then((res)=>res.json())
-        .then((data)=>{
-          if(data.insertedId){
-            refetch();
-            Swal.fire({
-              position:"top-end",
-              icon:"success",
-              title: 'Food added on the cart.',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          }else{
-            Swal.fire({
-              title: 'Please login to add',
-              text: "You won't be able to revert this!",
+          const cartItem = {menuItemId: _id, name, image, price, email: user.email}
+          fetch('http://localhost:5000/carts', {
+              method: 'POST',
+              headers: {
+                  'content-type': 'application/json'
+              },
+              body: JSON.stringify(cartItem)
+          })
+          .then(res => res.json())
+          .then(data => {
+              if(data.insertedId){
+                  refetch(); // refetch cart to update the number of items in the cart
+                  Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Food added on the cart.',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
+              }
+          })
+      }
+      else{
+          Swal.fire({
+              title: 'Please login to order the food',
               icon: 'warning',
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
-              confirmButtonText: 'Login Now'
+              confirmButtonText: 'Login now!'
             }).then((result) => {
               if (result.isConfirmed) {
-               navigate("/login",{state:{from:location}})
+                navigate('/login', {state: {from: location}})
               }
             })
-          }
-        })
       }
-    }
+  }
 
   return (
     <div className='relative'>
@@ -61,7 +61,7 @@ const FoodCard = ({item}) => {
             <h3 className='text-2xl font-semibold mb-2'>{name}</h3>
             <p className='absolute top-2 right-2 bg-orange-400 p-2 rounded-lg text-white font-semibold'>$: {price}</p>
             <p className='text-base text-slate-700'>{recipe.length>60 ? <>{recipe.slice(0,60)}...</>:<>{recipe}</>}</p>
-            <button onClick={()=>handleAddToCard(item)} className='uppercase py-3 px-5 bg-orange-500 text-white rounded-md font-semibold mt-5 hover:bg-black duration-500'>add to cart</button>
+            <button onClick={()=>handleAddToCart(item)} className='uppercase py-3 px-5 bg-orange-500 text-white rounded-md font-semibold mt-5 hover:bg-black duration-500'>add to cart</button>
         </div>
     </div>
   )

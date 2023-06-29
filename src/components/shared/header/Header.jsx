@@ -33,7 +33,7 @@ const Header = () => {
       </li>
       <li className='flex items-center'>
           {
-            user ? <Link className='text-lg font-medium rounded-full inline-block px-5 bg-orange-400' onClick={userLogOut}>LogOut</Link>:
+            user ? <Link className='btn bg-orange-500 text-white border-0 px-7 rounded-md font-semibold hover:bg-black duration-500' onClick={userLogOut}>LogOut</Link>:
             <Link className='btn bg-orange-500 text-white border-0 px-7 rounded-md font-semibold hover:bg-black duration-500' to={`/login`}>Login</Link>
           }
       </li>
@@ -58,14 +58,6 @@ const Header = () => {
                 <p className='text-2xl font-medium'>Restaurant</p>
             </Link>
           </div>
-          {/* <div className="navbar-center ">
-            <ul className="menu menu-horizontal px-1">
-                {navMenu}
-            </ul>
-          </div> */}
-          {/* <div className="navbar-end">
-            <a className="btn">Get started</a>
-          </div> */}
           <div className="navbar-end hidden lg:flex">
               <ul className="menu menu-horizontal px-1">
                   {navMenu}
