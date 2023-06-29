@@ -31,10 +31,10 @@ const Header = () => {
                 <button className="btn gap-2"><FaShoppingCart></FaShoppingCart> <div className="badge">+{cart?.length || 0}</div></button>
           </Link>
       </li>
-      <li>
+      <li className='flex items-center'>
           {
             user ? <Link className='text-lg font-medium rounded-full inline-block px-5 bg-orange-400' onClick={userLogOut}>LogOut</Link>:
-            <Link className='text-lg font-medium rounded-full inline-block px-5 bg-orange-400' to={`/login`}>Login</Link>
+            <Link className='btn bg-orange-500 text-white border-0 px-7 rounded-md font-semibold hover:bg-black duration-500' to={`/login`}>Login</Link>
           }
       </li>
   </>
