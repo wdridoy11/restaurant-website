@@ -7,8 +7,6 @@ import useCart from '../hooks/useCart';
 
 const Dashboard = () => {
   const [cart] = useCart();
-  // TODO: load data from the server to have dynamic isAdmin based on Date
-  const isAdmin = true;
   return (
     <>
     <Helmet><title>Bistro | Dashboard</title></Helmet>
@@ -21,7 +19,7 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
         <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content">
-        {
+        {/* {
           isAdmin ? <>
               <li className='text-base font-medium'><NavLink to={'/dashboard/home'}><FaHome></FaHome>Admin Home</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaUtensils></FaUtensils>Add Items</NavLink></li>
@@ -39,7 +37,7 @@ const Dashboard = () => {
               </li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/history'}><FaWallet></FaWallet>Payment History</NavLink></li>
           </>
-        }
+        } */}
 
 
           
