@@ -8,6 +8,7 @@ import useCart from '../../../hooks/useCart';
 const Header = () => {
 
   const {user , userLogout} = useContext(AuthContetxt);
+
   const [cart] = useCart();
   // landle user logout
   const userLogOut=()=>{

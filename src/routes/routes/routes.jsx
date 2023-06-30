@@ -1,16 +1,17 @@
 import React from 'react'
 import {createBrowserRouter} from "react-router-dom";
+// page import
 import Main from '../../layout/Main';
-import Home from '../../pages/home/home/Home';
-import Menu from '../../pages/menu/menu/Menu';
 import Login from '../../pages/login/Login';
-import Order from '../../pages/order/order/Order';
-import Registration from '../../pages/registration/Registration';
-import PrivetRoute from '../privetRoute/PrivetRoute';
-import Secret from '../../components/shared/secret/Secret';
+import Menu from '../../pages/menu/menu/Menu';
+import Home from '../../pages/home/home/Home';
 import Dashboard from '../../layout/Dashboard';
+import Order from '../../pages/order/order/Order';
+import PrivetRoute from '../privetRoute/PrivetRoute';
 import MyCard from '../../pages/dashboard/myCard/MyCard';
-import AllUsers from '../../pages/dashboard/allUsers/AllUsers';
+import Secret from '../../components/shared/secret/Secret';
+import Registration from '../../pages/registration/Registration';
+import AllUsers from '../../pages/dashboard/admin/allUsers/AllUsers';
 
 const router = createBrowserRouter([
     {

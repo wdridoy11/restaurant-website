@@ -3,10 +3,16 @@ import { Helmet } from 'react-helmet-async';
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBars,FaShoppingBag, FaEnvelope, FaUtensils, FaUsers, FaBook} from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCart from '../hooks/useCart';
+import { useContext } from 'react';
+import { AuthContetxt } from '../context/AuthProvider';
 
 
 const Dashboard = () => {
   const [cart] = useCart();
+  const {user} = useContext(AuthContetxt);
+    // console.log(user.photoURL)
+  // console.log(user.displayName)
+  // console.log()
   return (
     <>
     <Helmet><title>Bistro | Dashboard</title></Helmet>
@@ -19,6 +25,11 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
         <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content">
+          <div className='text-center mb-4'>
+              <img className='w-32 h-32 object-cover rounded-full mx-auto' src={user?.photoURL} alt="" />
+              <h3 className='text-lg font-medium mt-2'>{user?.displayName}</h3>
+              <h3 className='text-base font-normal mt-1'>{user?.email}</h3>
+          </div>
         {/* { */}
           {/* isAdmin ? <> */}
               <li className='text-base font-medium'><NavLink to={'/dashboard/home'}><FaHome></FaHome>Admin Home</NavLink></li>

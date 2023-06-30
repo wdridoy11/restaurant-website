@@ -7,7 +7,7 @@ import { FaTrash } from 'react-icons/fa';
 const MyCard = () => {
   const [cart, refetch] = useCart();
   const total = cart.reduce((sum,item)=>item.price + sum,0);
-
+  const price = total.toFixed(2);
 const handleDelete=(item)=>{
   Swal.fire({
     title: 'Are you sure?',
@@ -42,23 +42,19 @@ const handleDelete=(item)=>{
 
 
   return (
-    <div className='w-full'>
+    <div className='w-full h-screen pt-10 lg:px-10'>
       <Helmet><title>Bistro | My Card</title></Helmet>
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-between mb-2'>
         <h3>Total Orders: {cart.length || 0}</h3>
-        <h3>Total Price: {total}</h3>
-        <button className='btn'>Pay</button>
+        <h3>Total Price: {price}</h3>
+        <button className='btn bg-orange-500 text-white border-0 px-7 rounded-md font-semibold hover:bg-black duration-500'>Pay</button>
       </div>
-      <div className="overflow-x-auto w-full lg:px-10">
+      <div className="overflow-x-auto w-full">
           <table className="table w-full">
             {/* head */}
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
+                <th>#</th>
                 <th>ITEM IMAGE</th>
                 <th>ITEM NAME</th>
                 <th>PRICE</th>
@@ -67,11 +63,7 @@ const handleDelete=(item)=>{
             </thead>
             <tbody>
                 {cart &&  cart.map((item,index)=><tr>
-                    <th>
-                      <label>
-                        <input type="checkbox" className="checkbox" />
-                      </label>
-                    </th>
+                    <th>{index+1}</th>
                     <td>
                       <div className="flex items-center space-x-3">
                         <div className="avatar">
