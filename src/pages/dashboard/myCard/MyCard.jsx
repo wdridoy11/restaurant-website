@@ -8,7 +8,7 @@ const MyCard = () => {
   const [cart, refetch] = useCart();
   const total = cart.reduce((sum,item)=>item.price + sum,0);
 
-const handleDelete=()=>{
+const handleDelete=(item)=>{
   Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
@@ -85,7 +85,7 @@ const handleDelete=()=>{
                     </td>
                     <td>{item.price}</td>
                     <th>
-                      <button onClick={handleDelete} className="btn btn-ghost btn-xs"><FaTrash></FaTrash></button>
+                      <button onClick={()=>handleDelete(item)} className="btn btn-ghost btn-xs"><FaTrash></FaTrash></button>
                     </th>
                   </tr>)}
             </tbody>

@@ -28,7 +28,7 @@ const Header = () => {
       <li><Link className='text-lg font-medium' to={`/`}>Contact Us</Link></li>
       <li>
           <Link to={'/dashboard/mycart'}>
-                <button className="btn gap-2"><FaShoppingCart></FaShoppingCart> <div className="badge">+{cart?.length || 0}</div></button>
+                <button className="btn gap-2"><FaShoppingCart></FaShoppingCart><div className="badge">+{cart?.length || 0}</div></button>
           </Link>
       </li>
       <li className='flex items-center'>

@@ -19,14 +19,14 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
         <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content">
-        {/* {
-          isAdmin ? <>
+        {/* { */}
+          {/* isAdmin ? <> */}
               <li className='text-base font-medium'><NavLink to={'/dashboard/home'}><FaHome></FaHome>Admin Home</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaUtensils></FaUtensils>Add Items</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaWallet></FaWallet>Manage Items</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaBook></FaBook>Manage Bookings</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/allusers'}><FaUsers></FaUsers>All Users</NavLink></li>
-          </>:<>
+          {/* </>:<> */}
               <li className='text-base font-medium'><NavLink to={'/dashboard/home'}><FaHome></FaHome>User Home</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/reservation'}><FaCalendarAlt></FaCalendarAlt>Reservation</NavLink></li>
               <li className='text-base font-medium'>
@@ -36,8 +36,8 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/history'}><FaWallet></FaWallet>Payment History</NavLink></li>
-          </>
-        } */}
+          {/* </> */}
+        {/* } */}
 
 
           
