@@ -1,50 +1,62 @@
 import React, { useContext } from 'react'
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContetxt } from '../../context/AuthProvider'
-
 
 import authentication from '../../assets/others/authentication.png';
 import authentication1 from '../../assets/others/authentication2.png';
-import { useForm } from 'react-hook-form';
-import { Helmet } from 'react-helmet-async';
 import SocialLogin from '../../components/shared/socialLogin/SocialLogin';
+import { AuthContetxt } from '../../context/AuthProvider';
 
 const Registration = () => {
-  
   // import AuthProvider firebase
-  const {createUserUsingEmail, userProfileUpdate} = useContext(AuthContetxt);
+  const {userProfileUpdate,createUserUsingEmail} = useContext(AuthContetxt)
   // import useForm
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   // handle Registration
   const onSubmit = data =>{
-      createUserUsingEmail(data.email,data.password)
+      createUserUsingEmail(data.email, data.password)
       .then((res)=>{
         const user = res.user;
-        console.log(user)
+        // user Profile Update start
         userProfileUpdate(user.name, user.photoURL)
         .then((res)=>{
-          console.log(res)
-          Swal.fire({
-            title: 'account create successful',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
+          console.log("Hello res",res)
+          const saveUser ={name: data.name,email: data.email}
+          fetch(`http://localhost:5000/users`,{
+            method:"POST",
+            headers:{
+              "content-type":"application/json"
             },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
+            body:JSON.stringify(saveUser)
+          })
+          .then((res)=>res.json())
+          .then((userData)=>{
+            console.log("Hello userData",userData)
+            if(userData.insertedId){
+              Swal.fire({
+                title: 'account create successful',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              });
+              navigate('/')
             }
-          });
-          navigate('/')
+          })
         })
         .catch((error)=>{
           console.log(error.message)
         })
+        // user Profile Update end
       })
       .catch((error)=>{
         console.log(error.message)
       })
-      console.log(data)
   };
 
 
