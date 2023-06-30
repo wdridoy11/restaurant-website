@@ -13,6 +13,7 @@ import MyCard from '../../pages/dashboard/user/myCard/MyCard';
 import Registration from '../../pages/registration/Registration';
 import AllUsers from '../../pages/dashboard/admin/allUsers/AllUsers';
 import AddItems from '../../pages/dashboard/admin/addItems/AddItems';
+import UpdateItems from '../../pages/dashboard/admin/updateItems/UpdateItems';
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         {
           path:"additems",
           element:<AddItems></AddItems>
+        },
+        {
+          path:"updateitems",
+          element:<UpdateItems></UpdateItems>
         },
         {
           path:"mycart",
