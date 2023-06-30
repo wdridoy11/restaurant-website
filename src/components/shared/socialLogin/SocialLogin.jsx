@@ -15,6 +15,7 @@ const SocialLogin = () => {
         .then((res)=>{
             const loginedUser = res.user;
             const saveUser = {name:loginedUser.displayName,email:loginedUser.email}
+            // user data send database
             fetch(`http://localhost:5000/users`,{
                 method:"POST",
                 headers:{
@@ -27,8 +28,8 @@ const SocialLogin = () => {
                 console.log(data)
                 if(data.insertedId){
                     console.log("from",from)
-                    navigate("/")
-                    // navigate(from,{replace:true})
+                    // navigate("/")
+                    navigate(from,{replace:true})
                 }
             })
         })

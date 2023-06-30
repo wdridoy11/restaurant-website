@@ -10,9 +10,7 @@ import { AuthContetxt } from '../context/AuthProvider';
 const Dashboard = () => {
   const [cart] = useCart();
   const {user} = useContext(AuthContetxt);
-    // console.log(user.photoURL)
-  // console.log(user.displayName)
-  // console.log()
+    console.log(user.photoURL)
   return (
     <>
     <Helmet><title>Bistro | Dashboard</title></Helmet>
@@ -26,14 +24,14 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
         <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content">
           <div className='text-center mb-4'>
-              <img className='w-32 h-32 object-cover rounded-full mx-auto' src={user?.photoURL} alt="" />
+              <img className='w-32 h-32 object-cover rounded-full mx-auto border' src={user?.photoURL} alt="profile" />
               <h3 className='text-lg font-medium mt-2'>{user?.displayName}</h3>
               <h3 className='text-base font-normal mt-1'>{user?.email}</h3>
           </div>
         {/* { */}
           {/* isAdmin ? <> */}
               <li className='text-base font-medium'><NavLink to={'/dashboard/home'}><FaHome></FaHome>Admin Home</NavLink></li>
-              <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaUtensils></FaUtensils>Add Items</NavLink></li>
+              <li className='text-base font-medium'><NavLink to={'/dashboard/additems'}><FaUtensils></FaUtensils>Add Items</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaWallet></FaWallet>Manage Items</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaBook></FaBook>Manage Bookings</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/allusers'}><FaUsers></FaUsers>All Users</NavLink></li>

@@ -8,10 +8,11 @@ import Home from '../../pages/home/home/Home';
 import Dashboard from '../../layout/Dashboard';
 import Order from '../../pages/order/order/Order';
 import PrivetRoute from '../privetRoute/PrivetRoute';
-import MyCard from '../../pages/dashboard/myCard/MyCard';
 import Secret from '../../components/shared/secret/Secret';
+import MyCard from '../../pages/dashboard/user/myCard/MyCard';
 import Registration from '../../pages/registration/Registration';
 import AllUsers from '../../pages/dashboard/admin/allUsers/AllUsers';
+import AddItems from '../../pages/dashboard/admin/addItems/AddItems';
 
 const router = createBrowserRouter([
     {
@@ -45,12 +46,16 @@ const router = createBrowserRouter([
       element:<PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
       children:[
         {
-          path:"mycart",
-          element:<MyCard></MyCard>
-        },
-        {
           path:"allusers",
           element:<AllUsers></AllUsers>
+        },
+        {
+          path:"additems",
+          element:<AddItems></AddItems>
+        },
+        {
+          path:"mycart",
+          element:<MyCard></MyCard>
         }
       ]
     },

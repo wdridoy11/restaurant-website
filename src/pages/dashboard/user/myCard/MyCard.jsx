@@ -1,11 +1,11 @@
 import React from 'react'
 import Swal from 'sweetalert2'
 import { Helmet } from 'react-helmet-async'
-import useCart from '../../../hooks/useCart'
 import { FaTrash } from 'react-icons/fa';
+import useCart from '../../../../hooks/useCart';
 
 const MyCard = () => {
-  const [cart, refetch] = useCart();
+  const [cart, refetch] = useCart() ;
   const total = cart.reduce((sum,item)=>item.price + sum,0);
   const price = total.toFixed(2);
 const handleDelete=(item)=>{
