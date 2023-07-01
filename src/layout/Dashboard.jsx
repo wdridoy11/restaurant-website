@@ -10,7 +10,8 @@ import { AuthContetxt } from '../context/AuthProvider';
 const Dashboard = () => {
   const [cart] = useCart();
   const {user} = useContext(AuthContetxt);
-    console.log(user.photoURL)
+  // TODB : load data from the server to have dynamic isAdmin base
+  const isAdmin = true
   return (
     <>
     <Helmet><title>Bistro | Dashboard</title></Helmet>
@@ -28,14 +29,14 @@ const Dashboard = () => {
               <h3 className='text-lg font-medium mt-2'>{user?.displayName}</h3>
               <h3 className='text-base font-normal mt-1'>{user?.email}</h3>
           </div>
-        {/* { */}
-          {/* isAdmin ? <> */}
+          {
+           isAdmin ? <> 
               <li className='text-base font-medium'><NavLink to={'/dashboard/home'}><FaHome></FaHome>Admin Home</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/additems'}><FaUtensils></FaUtensils>Add Items</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaWallet></FaWallet>Manage Items</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/'}><FaBook></FaBook>Manage Bookings</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/allusers'}><FaUsers></FaUsers>All Users</NavLink></li>
-          {/* </>:<> */}
+           </>:<> 
               <li className='text-base font-medium'><NavLink to={'/dashboard/home'}><FaHome></FaHome>User Home</NavLink></li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/reservation'}><FaCalendarAlt></FaCalendarAlt>Reservation</NavLink></li>
               <li className='text-base font-medium'>
@@ -45,12 +46,8 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className='text-base font-medium'><NavLink to={'/dashboard/history'}><FaWallet></FaWallet>Payment History</NavLink></li>
-          {/* </> */}
-        {/* } */}
-
-
-          
-          
+           </>
+        }
           <div className="divider"></div> 
           <li className='text-base font-medium'><NavLink to={'/'}><FaHome></FaHome>Home</NavLink></li>
           <li className='text-base font-medium'><NavLink to={'/menu'}><FaBars></FaBars>Menu</NavLink></li>
