@@ -5,7 +5,7 @@ import { FaTrash } from 'react-icons/fa';
 import useCart from '../../../../hooks/useCart';
 
 const MyCard = () => {
-  
+
   const [cart, refetch] = useCart() ;
   const total = cart.reduce((sum,item)=>item.price + sum,0);
   const price = total.toFixed(2);
@@ -52,7 +52,6 @@ const MyCard = () => {
       </div>
       <div className="overflow-x-auto w-full">
           <table className="table w-full">
-            {/* head */}
             <thead>
               <tr>
                 <th>#</th>
@@ -67,15 +66,12 @@ const MyCard = () => {
                     <th>{index+1}</th>
                     <td>
                       <div className="flex items-center space-x-3">
-                        <div className="avatar">
                           <div className="mask mask-squircle w-12 h-12">
                             <img src={item.image} alt="Avatar Tailwind CSS Component" />
                           </div>
-                        </div>
                       </div>
                     </td>
-                    <td>{item.name}
-                    </td>
+                    <td>{item.name}</td>
                     <td>{item.price}</td>
                     <th>
                       <button onClick={()=>handleDelete(item)} className="btn btn-ghost btn-xs"><FaTrash></FaTrash></button>

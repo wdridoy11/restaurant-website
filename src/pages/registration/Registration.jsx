@@ -21,9 +21,8 @@ const Registration = () => {
       .then((res)=>{
         const user = res.user;
         // user Profile Update start
-        userProfileUpdate(user.name, user.photoURL)
+        userProfileUpdate(data.name, data.photoURL)
         .then((res)=>{
-          console.log("Hello res",res)
           const saveUser ={name: data.name,email: data.email}
           fetch(`http://localhost:5000/users`,{
             method:"POST",
@@ -34,7 +33,6 @@ const Registration = () => {
           })
           .then((res)=>res.json())
           .then((userData)=>{
-            console.log("Hello userData",userData)
             if(userData.insertedId){
               Swal.fire({
                 title: 'account create successful',
@@ -80,8 +78,8 @@ const Registration = () => {
                             <label className="label">
                               <span className="label-text text-base font-medium">Photo URL</span>
                             </label>
-                            <input type="text" id='photo' {...register("photo")} name='photo' placeholder="Photo URL" className="outline-none p-4 rounded-lg input-bordered w-full"required />
-                            {errors.photo && <span>This name field is required</span>}
+                            <input type="text" id='photoURL' {...register("photoURL")} name='photoURL' placeholder="Photo URL" className="outline-none p-4 rounded-lg input-bordered w-full"required />
+                            {errors.photoURL && <span>This name field is required</span>}
                         </div>
                         <div className="form-control w-ful">
                             <label className="label">
