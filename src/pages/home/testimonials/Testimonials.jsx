@@ -36,7 +36,7 @@ const Testimonials = () => {
                 keyboard={true}
                 modules={[Navigation, Pagination, Mousewheel, Keyboard]}
                 className="mySwiper w-1/2 px-5 text-center mt-16">
-                    {testimonials.map((testimonial)=><SwiperSlide className='px-20'>
+                    {testimonials.map((testimonial, index)=><SwiperSlide className='px-20' key={index}>
                           <Rating
                           style={{ maxWidth: 180 }}
                           value={testimonial.rating}

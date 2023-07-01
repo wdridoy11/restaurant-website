@@ -35,7 +35,6 @@ const SocialLogin = () => {
         })
     }
 
-
   return (
     <div>
         <p className='text-xl text-black my-2'>Or sign in with</p>

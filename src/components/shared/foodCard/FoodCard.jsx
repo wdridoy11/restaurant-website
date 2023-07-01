@@ -14,7 +14,6 @@ const FoodCard = ({item}) => {
     const location = useLocation();
 
     const handleAddToCart = item => {
-      console.log(item);
       if(user && user.email){
           const cartItem = {menuItemId: _id, name, image, price, email: user.email}
           fetch('http://localhost:5000/carts', {
@@ -34,7 +33,7 @@ const FoodCard = ({item}) => {
                       title: 'Food added on the cart.',
                       showConfirmButton: false,
                       timer: 1500
-                    })
+                  })
               }
           })
       }

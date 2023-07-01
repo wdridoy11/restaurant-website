@@ -5,41 +5,42 @@ import { FaTrash } from 'react-icons/fa';
 import useCart from '../../../../hooks/useCart';
 
 const MyCard = () => {
+  
   const [cart, refetch] = useCart() ;
   const total = cart.reduce((sum,item)=>item.price + sum,0);
   const price = total.toFixed(2);
-const handleDelete=(item)=>{
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      fetch(`http://localhost:5000/carts/${item._id}`,{
-        method:"DELETE",
-        headers:{
-          "content-type":"application/json"
-        }
-      })
-      .then((res)=>res.json())
-      .then((data)=>{
-        if(data.deletedCount>0){
-          refetch();
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-        }
-      })
-    }
-  })
-}
 
+  const handleDelete=(item)=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`,{
+          method:"DELETE",
+          headers:{
+            "content-type":"application/json"
+          }
+        })
+        .then((res)=>res.json())
+        .then((data)=>{
+          if(data.deletedCount>0){
+            refetch();
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        })
+      }
+    })
+  }
 
   return (
     <div className='w-full h-screen pt-10 lg:px-10'>
@@ -62,7 +63,7 @@ const handleDelete=(item)=>{
               </tr>
             </thead>
             <tbody>
-                {cart &&  cart.map((item,index)=><tr>
+                {cart &&  cart.map((item,index)=><tr key={index}>
                     <th>{index+1}</th>
                     <td>
                       <div className="flex items-center space-x-3">
