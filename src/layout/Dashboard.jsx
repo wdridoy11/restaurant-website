@@ -5,13 +5,15 @@ import { NavLink, Outlet } from 'react-router-dom';
 import useCart from '../hooks/useCart';
 import { useContext } from 'react';
 import { AuthContetxt } from '../context/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
 
 
 const Dashboard = () => {
   const [cart] = useCart();
   const {user} = useContext(AuthContetxt);
   // TODB : load data from the server to have dynamic isAdmin base
-  const isAdmin = true
+  // const isAdmin =true;
+  const [isAdmin] = useAdmin();
   return (
     <>
     <Helmet><title>Bistro | Dashboard</title></Helmet>

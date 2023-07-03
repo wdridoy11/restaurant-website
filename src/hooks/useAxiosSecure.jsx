@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContetxt } from '../context/AuthProvider';
 
-
 const useAxiosSecure = () => {
   const { userLogout } = useContext(AuthContetxt); 
   const navigate = useNavigate(); 
