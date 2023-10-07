@@ -103,7 +103,7 @@ const Registration = () => {
                             {errors.password?.type === 'minLength' && <p role="alert" className='text-red-600'>Password must be 8 characters</p>}
                             {errors.password?.type === 'pattern' && <p role="alert" className='text-red-600'>Password must have one Uppercase one lowercase one number one special characters </p>}
                         </div>
-                        <input type="submit" className='py-4 w-full bg-[#D1A054] text-white cursor-pointer font-semibold mt-5 rounded-lg hover:bg-black duration-500' value="Sign In" />
+                        <input type="submit" className='py-4 w-full bg-[#D1A054] text-white cursor-pointer font-semibold mt-5 rounded-lg hover:bg-black duration-500' value="Sign Up" />
                     </form>
                     <div className='text-center mt-5'>
                         <p className='font-semibold text-[#D1A054] text-xl'>Already registered? <Link to={'/login'}>Go to log in</Link></p>

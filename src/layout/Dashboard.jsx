@@ -5,8 +5,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import useCart from '../hooks/useCart';
 import { useContext } from 'react';
 import { AuthContetxt } from '../context/AuthProvider';
-import useAdmin from '../hooks/useAdmin';
-
+import useAdmin from '../hooks/useAdmin'
 
 const Dashboard = () => {
   const [cart] = useCart();

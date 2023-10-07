@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import { Helmet } from 'react-helmet-async'
 import { FaTrash } from 'react-icons/fa';
 import useCart from '../../../../hooks/useCart';
+import { Link } from 'react-router-dom';
 
 const MyCard = () => {
 
@@ -29,6 +30,7 @@ const MyCard = () => {
         })
         .then((res)=>res.json())
         .then((data)=>{
+          console.log(data)
           if(data.deletedCount>0){
             refetch();
             Swal.fire(
@@ -48,7 +50,7 @@ const MyCard = () => {
       <div className='flex items-center justify-between mb-2'>
         <h3>Total Orders: {cart.length || 0}</h3>
         <h3>Total Price: {price}</h3>
-        <button className='btn bg-orange-500 text-white border-0 px-7 rounded-md font-semibold hover:bg-black duration-500'>Pay</button>
+        <Link to={'/dashboard/payment'} className='btn bg-orange-500 text-white border-0 px-7 rounded-md font-semibold hover:bg-black duration-500'>Pay</Link>
       </div>
       <div className="overflow-x-auto w-full">
           <table className="table w-full">

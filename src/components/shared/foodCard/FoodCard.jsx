@@ -4,6 +4,9 @@ import { useContext } from 'react';
 import { AuthContetxt } from '../../../context/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../../hooks/useCart';
+import { useEffect } from 'react';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const FoodCard = ({item}) => {
 
@@ -12,6 +15,19 @@ const FoodCard = ({item}) => {
     const [, refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [axiosSecure] = useAxiosSecure();
+    const {data:users=[]} = useQuery(["users"],async()=>{
+        const res= await axiosSecure.get('/users')
+        const resutl = res.data;
+        const filter = resutl.find((userEmail)=>userEmail.email === user?.email);
+        return filter
+    })
+
+    // when admin click add to card btn it's not work 
+    const handleAdminCardDisable=()=>{
+        console.log("Admin can't be card this food")
+    }
 
     const handleAddToCart = item => {
       if(user && user.email){
@@ -60,7 +76,13 @@ const FoodCard = ({item}) => {
             <h3 className='text-2xl font-semibold mb-2'>{name}</h3>
             <p className='absolute top-2 right-2 bg-orange-400 p-2 rounded-lg text-white font-semibold'>$: {price}</p>
             <p className='text-base text-slate-700'>{recipe.length>60 ? <>{recipe.slice(0,60)}...</>:<>{recipe}</>}</p>
-            <button onClick={()=>handleAddToCart(item)} className='uppercase py-3 px-5 bg-orange-500 text-white rounded-md font-semibold mt-5 hover:bg-black duration-500'>add to cart</button>
+            {/* <button onClick={()=>handleAddToCart(item)} className='uppercase py-3 px-5 bg-orange-500 text-white rounded-md font-semibold mt-5 hover:bg-black duration-500'>add to cart</button> */}
+            <button 
+                onClick={users?.role === "admin" ? handleAdminCardDisable:()=>handleAddToCart(item)} 
+                className={users.role === "admin"?
+                "uppercase py-3 px-5 bg-orange-500 opacity-50 text-white rounded-md font-semibold mt-5 cursor-not-allowed":
+                "uppercase py-3 px-5 bg-orange-500 text-white rounded-md font-semibold mt-5 hover:bg-black duration-500"}>
+                add to cart</button>
         </div>
     </div>
   )

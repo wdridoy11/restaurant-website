@@ -14,6 +14,7 @@ import Registration from '../../pages/registration/Registration';
 import AllUsers from '../../pages/dashboard/admin/allUsers/AllUsers';
 import AddItems from '../../pages/dashboard/admin/addItems/AddItems';
 import UpdateItems from '../../pages/dashboard/admin/updateItems/UpdateItems';
+import Payment from '../../pages/dashboard/payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
         {
           path:"mycart",
           element:<MyCard></MyCard>
+        },
+        {
+          path:"payment",
+          element:<Payment></Payment>
         }
       ]
     },
