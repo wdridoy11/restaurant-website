@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContetxt } from '../../../context/AuthProvider';
+import "./CheckoutForm.css"
 
-const CheckoutForm = ({price}) => {
+const CheckoutForm = ({price,cart}) => {
 
   const stripe = useStripe();
   const elements = useElements();
@@ -17,13 +18,14 @@ const CheckoutForm = ({price}) => {
   const [transactionId,setTransactionId] = useState("");
 
   useEffect(()=>{
-    console.log(price)
-    axiosSecure.post(`/create-payment-intent`,{price})
-    .then((res)=>{
-      console.log(res.data.clientSecret)
-      setClientSecret(res.data.clientSecret)
-    })
-  },[])
+    if(price>0){
+      axiosSecure.post(`/create-payment-intent`,{price})
+      .then((res)=>{
+        console.log(res.data.clientSecret)
+        setClientSecret(res.data.clientSecret)
+      })
+    }
+  },[price, axiosSecure])
 
 
   const handleSubmit= async(event)=>{
@@ -65,10 +67,27 @@ const CheckoutForm = ({price}) => {
       if(paymentIntent.status === "succeeded"){
         setTransactionId(paymentIntent.id)
         // TODO next steps
-        const transactionId = paymentIntent.id;
+
+        const payment = {
+          email: user?.email,
+          transactionId: paymentIntent.id, 
+          price,
+          date: new Date(),
+          quantity: cart.length,
+          cardItems: cart.map((item)=>item._id),
+          menuItems: cart.map((item)=>item.menuItemId),
+          status:"Services pending",
+          itemName:cart.map((item)=>item.name)
+       }
+       axiosSecure.post(`/payment`,payment)
+       .then((res)=>{
+        console.log(res.data)
+        if(res.data.result.insertedId){
+          console.log("Hello Inserted")
+        }
+       })
       }
       console.log("paymentIntent",paymentIntent)
-
   }
 
   return (
