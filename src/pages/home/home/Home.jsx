@@ -5,6 +5,8 @@ import Category from '../../category/Category'
 import PopularMenu from '../popularMenu/PopularMenu'
 import Featured from '../featured/Featured'
 import Testimonials from '../testimonials/Testimonials'
+import Gallery from '../gallery/Gallery';
+import Open from '../open/Open';
 
 const Home = () => {
   return (
@@ -13,7 +15,9 @@ const Home = () => {
       <Banner></Banner>
       <Category></Category>
       <PopularMenu></PopularMenu>
-      <Featured></Featured>
+      {/* <Featured></Featured> */}
+      <Gallery />
+      <Open />
       <Testimonials></Testimonials>
     </div>
   )

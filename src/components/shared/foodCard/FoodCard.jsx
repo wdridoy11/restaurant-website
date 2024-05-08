@@ -1,12 +1,11 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { useContext } from 'react';
-import { AuthContetxt } from '../../../context/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../../hooks/useCart';
-import { useEffect } from 'react';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContetxt } from '../../../context/AuthProvider';
 
 const FoodCard = ({item}) => {
 
