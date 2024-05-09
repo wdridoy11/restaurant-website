@@ -7,6 +7,7 @@ import Featured from '../featured/Featured'
 import Testimonials from '../testimonials/Testimonials'
 import Gallery from '../gallery/Gallery';
 import Open from '../open/Open';
+import Blogs from '../../blog/Blogs';
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Gallery />
       <Open />
       <Testimonials></Testimonials>
+      <Blogs />
     </div>
   )
 }
