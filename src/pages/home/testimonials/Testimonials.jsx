@@ -13,7 +13,7 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import HeadingTitle from '../../../components/shared/headingTitle/HeadingTitle'
 
 const Testimonials = () => {
-    const [rating, setRating] = useState(0)
+    
     const [testimonials,setTestimonials] =useState([]);
     useEffect(()=>{
         fetch(`http://localhost:5000/reviews`)
@@ -27,7 +27,7 @@ const Testimonials = () => {
   return (
     <div className='py-20'>
         <div className='container mx-auto'>
-            <HeadingTitle subHeading="---What Our Clients Say---" heading="TESTIMONIALS"></HeadingTitle>
+            <HeadingTitle subHeading="What Our Clients Say" heading="TESTIMONIALS"></HeadingTitle>
             <Swiper
                 cssMode={true}
                 navigation={true}
@@ -35,17 +35,15 @@ const Testimonials = () => {
                 mousewheel={true}
                 keyboard={true}
                 modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-                className="mySwiper w-1/2 px-5 text-center mt-16">
+                className="mySwiper w-full px-5 text-center mt-16">
                     {testimonials.map((testimonial, index)=><SwiperSlide className='px-20' key={index}>
-                          <Rating
-                          style={{ maxWidth: 180 }}
-                          value={testimonial.rating}
-                          className='mx-auto'
-                          readOnly
-                        />
-                        <p className='text-center my-5'>{testimonial.details}</p>
-                        <h3 className='text-3xl text-[#D99904] font-semibold text-center mb-10'>{testimonial.name}</h3>
-                    </SwiperSlide>)}
+                        <div className='border-2 mx-auto border-slate-100 rounded-xl p-10 mt-3 hover:shadow-lg transition duration-150 w-1/2'>
+                            <img className='w-20 mx-auto' src="https://i.ibb.co/cyhqwhz/quote.png" alt="quote" />
+                            <p className='text-lg text-[#777] text-center italic mt-8 mb-8'>{testimonial.details}</p>
+                            <h3 className='text-2xl text-black italic font-semibold text-center mb-10'>- {testimonial.name} -</h3>
+                        </div>
+                    </SwiperSlide>
+                    )}
             </Swiper>
         </div>
     </div>

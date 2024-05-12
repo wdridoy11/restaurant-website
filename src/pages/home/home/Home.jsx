@@ -15,8 +15,8 @@ const Home = () => {
       <Helmet><title>Bistro | Home</title></Helmet>
       <Banner></Banner>
       <Category></Category>
+      <Featured />
       <PopularMenu></PopularMenu>
-      {/* <Featured></Featured> */}
       <Gallery />
       <Open />
       <Testimonials></Testimonials>

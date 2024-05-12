@@ -19,7 +19,7 @@ import HeadingTitle from '../../components/shared/headingTitle/HeadingTitle';
 const Category = () => {
   return (
     <div className='my-20'>
-      <HeadingTitle subHeading="---From 11:00am to 10:00pm---" heading="ORDER ONLINE"></HeadingTitle>
+      <HeadingTitle subHeading="From 11:00am to 10:00pm" heading="ORDER ONLINE"></HeadingTitle>
       <div className='mt-5 px-5 md:px-0'>
         <Swiper
           breakpoints={{

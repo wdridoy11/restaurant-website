@@ -5,7 +5,7 @@ const HeadingTitle = ({subHeading,heading}) => {
     <div>
         <div className='text-center'>
           <h4 className='text-xl font-normal text-[#D99904]'>{subHeading}</h4>
-          <h1 className='text-4xl font-semibold border-b-2 border-t-2 inline-block py-5 mt-5'>{heading}</h1>
+          <h1 className='text-4xl font-semibold inline-block py-5 mt-2 capitalize'>{heading}</h1>
       </div>
     </div>
   )

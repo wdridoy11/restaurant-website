@@ -13,11 +13,11 @@ const PopularMenu = () => {
 
   return (
     <div>
-        <Cover coverImg={service} coverTitle="Best Services"></Cover>
         <div className='container mx-auto px-5 mt-20'>
-            <HeadingTitle subHeading="---Check it out---" heading="FROM OUR MENU"></HeadingTitle>   
+            <HeadingTitle subHeading="Check it out" heading="FROM OUR MENU"></HeadingTitle>   
             <MenuCategory menu={popular} btnText="View Full  Menu"></MenuCategory>
         </div>
+        <Cover coverImg={service} coverTitle="Best Services"></Cover>
     </div>
   )
 }

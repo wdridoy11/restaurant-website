@@ -16,7 +16,7 @@ const Blogs = () => {
 
   return (
     <div>
-        <HeadingTitle subHeading="---From Our Blog---" heading="OUR LATEST NEWS"></HeadingTitle>
+        <HeadingTitle subHeading="From Our Blog" heading="OUR LATEST NEWS"></HeadingTitle>
         <div className='container mx-auto'>
             <div className='grid grid-cols-2 gap-10 pt-10 py-20'>
                 <div>
